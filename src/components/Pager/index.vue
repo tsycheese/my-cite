@@ -33,6 +33,11 @@ export default {
       type: Number,
       default: 10,
     },
+    // 可见页码数
+    visibleNumber: {
+      type: Number,
+      default: 10,
+    },
   },
   computed: {
     // 总页码数
@@ -40,14 +45,14 @@ export default {
       return Math.ceil(this.total / this.limit);
     },
     visibleMin() {
-      let min = this.current - Math.floor(this.limit / 2);
+      let min = this.current - Math.floor(this.visibleNumber / 2);
       if (min < 1) {
         min = 1;
       }
       return min;
     },
     visibleMax() {
-      let max = this.visibleMin + this.limit - 1;
+      let max = this.visibleMin + this.visibleNumber - 1;
       if (max > this.pageNumber) {
         max = this.pageNumber;
       }
@@ -74,7 +79,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import url('../styles/var.less');
+@import '~@/styles/var.less';
 
 .pager-container {
   display: flex;
