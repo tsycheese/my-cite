@@ -103,3 +103,25 @@
 | load   | 原始图片加载完成后触发 | 无       | 无       |
 
 > 该组件的宽高与父元素的宽高相同
+
+
+
+
+
+
+
+# Concact
+
+![image-20241118224131935](C:\Users\17871\AppData\Roaming\Typora\typora-user-images\image-20241118224131935.png)
+
+![image-20241118224159647](C:\Users\17871\AppData\Roaming\Typora\typora-user-images\image-20241118224159647.png)
+
+该组件需要横向撑满容器，背景色透明，字体颜色为 @gray
+
+> 1. 如何实现点击弹出QQ对话？
+>
+> 	设置超链接为：tencent://message/?Menu=yes&uin=要对话的QQ号&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45
+>
+> 2. 如何实现点击弹出发送邮件？
+>
+> 	设置超链接为：mailto:邮件地址

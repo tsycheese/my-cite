@@ -29,7 +29,7 @@ export default {
 .content {
   width: 400px;
   height: 400px;
-  padding: 20px;
+  padding: 100px 30px;
   background-color: black;
 }
 </style>

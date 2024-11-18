@@ -1,7 +1,7 @@
 <template>
   <div class="contact-container">
     <!-- github -->
-    <a class="contact-item">
+    <a class="contact-item" href="https://github.com/tsycheese" targe="_blank">
       <div class="contact-icon">
         <Icon type="github"></Icon>
       </div>
@@ -23,7 +23,7 @@
         <Icon type="qq"></Icon>
       </div>
       <div class="contact-text">1787129710</div>
-      <div class="dialog">
+      <div class="pop">
         <img src="@/assets/qq.png" alt="QQ 联系二维码" />
       </div>
     </a>
@@ -57,62 +57,65 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 10px 0;
-}
+  @itemHeight: 30px;
 
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 0 8px;
-  color: white;
-  cursor: pointer;
-  line-height: 40px;
-  position: relative;
-  width: 200px;
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0 8px;
+    color: @gray;
+    cursor: pointer;
+    line-height: @itemHeight;
+    position: relative;
+    font-size: 14px;
 
-  &:hover {
-    color: @primary;
+    .contact-icon {
+      font-size: 26px;
+    }
+
+    /* 弹窗 */
+    .pop {
+      position: absolute;
+      bottom: @itemHeight + 4px;
+      left: 0;
+      width: 160px;
+      height: 160px;
+      border-radius: 4px;
+      background-color: white;
+      transform: scaleY(0);
+      transform-origin: center bottom;
+      transition: 0.3s;
+
+      img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      /* 箭头 */
+      &::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        background-color: white;
+        position: absolute;
+        bottom: -4px;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+      }
+    }
+
+    &:hover {
+      color: @primary;
+    }
+
+    &:hover .pop {
+      transform: scaleY(1);
+    }
   }
-
-  .contact-icon {
-    font-size: 25px;
-  }
-}
-
-.dialog {
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  width: 200px;
-  height: 200px;
-  border-radius: 4px;
-  background-color: white;
-  transform: scaleY(0);
-  transform-origin: center bottom;
-  transition: 0.3s;
-
-  img {
-    width: 90%;
-    height: 90%;
-    object-fit: cover;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  &::before {
-    content: '';
-    width: 10px;
-    height: 10px;
-    background-color: white;
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%) rotate(45deg);
-  }
-}
-
-.contact-item:hover .dialog {
-  transform: scaleY(1);
 }
 </style>
