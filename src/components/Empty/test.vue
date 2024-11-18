@@ -20,9 +20,9 @@ export default {
 .container {
   width: 500px;
   height: 500px;
-  background-color: antiquewhite;
+  // background-color: antiquewhite;
   margin: 100px auto;
-  padding: 20px;
+  position: relative;
 }
 
 .a {

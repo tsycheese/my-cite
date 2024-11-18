@@ -1,10 +1,10 @@
 <template>
   <div class="empty-container">
     <div class="empty-content">
-      <div class="empty-icon" :style="{ fontSize: iconSize }">
+      <div class="empty-icon">
         <Icon type="empty"></Icon>
       </div>
-      <div class="empty-text" :style="{ fontSize: textSize }">{{ text }}</div>
+      <p class="empty-text">{{ text }}</p>
     </div>
   </div>
 </template>
@@ -21,45 +21,26 @@ export default {
       type: String,
       default: '无数据',
     },
-    size: {
-      type: Number,
-      default: 50,
-    },
-  },
-  computed: {
-    iconSize() {
-      return this.size + 'px';
-    },
-    textSize() {
-      return (this.size / 50) * 14 + 'px';
-    },
   },
 };
 </script>
 
 <style lang="less" scoped>
+@import url('~@/styles/mixin.less');
+@import url('~@/styles/var.less');
+
 .empty-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .self-center(); // 设置居中
+  color: @gray;
+  text-align: center;
 }
 
-.empty-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.empty-icon {
+  font-size: 72px;
 }
-
-// .empty-icon {
-//   font-size: 50px;
-// }
 
 .empty-text {
   margin-top: 10px;
-  // font-size: 16px;
   font-weight: bold;
 }
 </style>
