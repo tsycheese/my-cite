@@ -1,13 +1,10 @@
 <template>
   <div class="image-loader">
-    <!-- 占位图始终显示，直到原图加载完成 -->
-    <img :src="placeholder" v-show="!isLoaded" class="placeholder" />
-
-    <!-- 使用动态样式绑定过渡动画 -->
+    <img v-if="!everythingOK" :src="placeholder" class="placeholder" />
     <img
       :src="src"
       class="original"
-      :style="originalStyle"
+      :style="{ opacity: originalOpacity, transition: duration + 'ms' }"
       @load="handleOriginalLoad"
     />
   </div>
@@ -31,48 +28,39 @@ export default {
   },
   data() {
     return {
-      isLoaded: false, // 用于跟踪原图是否已加载
+      originalOpacity: 0,
+      everythingOK: false,
     };
-  },
-  computed: {
-    // 动态计算原图的样式
-    originalStyle() {
-      return {
-        filter: this.isLoaded ? 'blur(0)' : 'blur(10px)', // 加载完成后移除模糊
-        transition: `filter ${this.duration}ms ease-in-out`, // 动态设置过渡效果
-      };
-    },
   },
   methods: {
     // 原图加载完成后设置状态
     handleOriginalLoad() {
-      this.isLoaded = true;
+      this.originalOpacity = 1; // 原图加载完成后将透明度设为1
+      setTimeout(() => {
+        this.everythingOK = true;
+      }, this.duration);
+      this.$emit('load'); // 触发 load事件，父组件可以监听并进行后续操作
     },
   },
 };
 </script>
 
 <style lang="less" scoped>
+@import url(~@/styles/mixin.less);
+
 .image-loader {
   width: 100%;
   height: 100%;
   position: relative;
+  overflow: hidden;
 
   img {
-    width: 100%;
-    height: 100%;
+    .self-fill();
     object-fit: cover;
-    position: absolute; // 保证图片重叠
-    top: 0;
-    left: 0;
   }
 
   .placeholder {
-    z-index: 1; // 占位图始终在上层
-  }
-
-  .original {
-    z-index: 2; // 原图加载完成后覆盖占位图
+    filter: blur(2vw);
   }
 }
 </style>

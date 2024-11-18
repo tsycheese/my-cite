@@ -4,6 +4,7 @@
       <ImageLoader
         src="https://images.pexels.com/photos/33109/fall-autumn-red-season.jpg?fit=crop&crop=entropy&w=3456&h=2304"
         placeholder="https://images.pexels.com/photos/33109/fall-autumn-red-season.jpg?w=100"
+        @load="handleImageLoaded"
       />
     </div>
   </div>
@@ -18,6 +19,11 @@ export default {
   components: {
     ImageLoader,
   },
+  methods: {
+    handleImageLoaded() {
+      console.log('Image loaded');
+    },
+  },
 };
 </script>
 
@@ -31,6 +37,5 @@ export default {
   height: 300px;
   background-color: antiquewhite;
   margin: 50px auto;
-  padding: 20px;
 }
 </style>
