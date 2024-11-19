@@ -1,7 +1,7 @@
 <template>
   <div class="contact-container">
     <!-- github -->
-    <a class="contact-item" href="https://github.com/tsycheese" targe="_blank">
+    <a class="contact-item" href="https://github.com/tsycheese" target="_blank">
       <div class="contact-icon">
         <Icon type="github"></Icon>
       </div>

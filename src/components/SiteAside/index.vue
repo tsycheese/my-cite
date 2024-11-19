@@ -39,6 +39,7 @@ export default {
   padding: 20px 0;
   width: 100%;
   height: 100%;
+  background-color: #000;
   align-items: center;
   overflow-x: hidden;
   overflow-y: auto;

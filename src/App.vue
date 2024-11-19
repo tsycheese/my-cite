@@ -1,5 +1,37 @@
 <template>
-  <div>
-    <h1>App 组件</h1>
+  <div class="main-container">
+    <Layout>
+      <template #left>
+        <div class="aside">
+          <SiteAside />
+        </div>
+      </template>
+      <template #main>
+        <div class="main-area">主区域</div>
+      </template>
+    </Layout>
   </div>
 </template>
+
+<script>
+import Layout from '@/components/Layout';
+import SiteAside from '@/components/SiteAside';
+
+export default {
+  components: {
+    Layout,
+    SiteAside,
+  },
+};
+</script>
+
+<style lang="less" scoped>
+.main-container {
+  height: 100vh;
+
+  .aside {
+    width: 250px;
+    height: 100%;
+  }
+}
+</style>
