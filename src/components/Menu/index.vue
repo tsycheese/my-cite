@@ -4,7 +4,7 @@
       v-for="item in menuItems"
       :key="item.path"
       class="menu-item"
-      :class="{ active: item.matchCondition('/about') }"
+      :class="{ selected: isSelected(item) }"
     >
       <div class="menu-icon">
         <Icon :type="item.icon" />
@@ -28,34 +28,40 @@ export default {
           name: '首页',
           icon: 'home',
           path: '/',
-          matchCondition: (currentPath) => currentPath === '/',
         },
         {
           name: '文章',
           icon: 'blog',
           path: '/blog',
-          matchCondition: (currentPath) => currentPath.startsWith('/blog'),
+          startsWith: true,
         },
         {
           name: '关于我',
           icon: 'about',
           path: '/about',
-          matchCondition: (currentPath) => currentPath === '/about',
         },
         {
           name: '项目&成果',
           icon: 'code',
           path: '/project',
-          matchCondition: (currentPath) => currentPath === '/project',
         },
         {
           name: '留言板',
           icon: 'chat',
           path: '/message',
-          matchCondition: (currentPath) => currentPath === '/message',
         },
       ],
     };
+  },
+  methods: {
+    isSelected(item) {
+      const link = item.path;
+      const curPathname = location.pathname.toLowerCase();
+      if (item.startsWith) {
+        return curPathname.startsWith(link);
+      }
+      return link === curPathname;
+    },
   },
 };
 </script>
@@ -66,7 +72,7 @@ export default {
 .menu-container {
   display: flex;
   flex-direction: column;
-  color: @lightWords;
+  color: @gray;
   width: 100%;
 }
 
@@ -82,8 +88,8 @@ export default {
 }
 
 .menu-item:hover,
-.menu-item.active {
-  color: white;
+.menu-item.selected {
+  // color: white;
   background-color: #2d2d2d;
 }
 </style>
