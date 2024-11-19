@@ -41,7 +41,7 @@ export default {
   height: 100%;
   align-items: center;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   h1 {
     margin-top: 20px;

@@ -19,6 +19,7 @@ export default {
 .test-container {
   background-color: black;
   width: 300px;
-  height: 500px;
+  height: 800px;
+  margin: 0 auto;
 }
 </style>
