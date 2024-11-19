@@ -55,9 +55,11 @@ export default {
 
 .contact-container {
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 10px 0;
   @itemHeight: 30px;
+  padding: 0 20px;
 
   .contact-item {
     display: flex;
@@ -70,7 +72,7 @@ export default {
     font-size: 14px;
 
     .contact-icon {
-      font-size: 26px;
+      font-size: 20px;
     }
 
     /* 弹窗 */

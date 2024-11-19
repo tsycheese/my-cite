@@ -73,6 +73,7 @@ export default {
   display: flex;
   flex-direction: column;
   color: @gray;
+  font-size: 16px;
   width: 100%;
 }
 
@@ -84,12 +85,14 @@ export default {
 }
 
 .menu-icon {
-  margin: 0 8px 0 30px;
+  margin: 0 8px 0 40px;
 }
 
-.menu-item:hover,
+.menu-item:hover {
+  color: white;
+}
+
 .menu-item.selected {
-  // color: white;
   background-color: #2d2d2d;
 }
 </style>
