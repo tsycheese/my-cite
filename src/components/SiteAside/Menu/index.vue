@@ -1,16 +1,18 @@
 <template>
   <div class="menu-container">
-    <div
+    <RouterLink
       v-for="item in menuItems"
+      :to="{ name: item.name }"
       :key="item.path"
+      :exact="item.exact"
+      active-class="selected"
       class="menu-item"
-      :class="{ selected: isSelected(item) }"
     >
       <div class="menu-icon">
         <Icon :type="item.icon" />
       </div>
-      <div class="menu-text">{{ item.name }}</div>
-    </div>
+      <div class="menu-text">{{ item.title }}</div>
+    </RouterLink>
   </div>
 </template>
 
@@ -25,43 +27,37 @@ export default {
     return {
       menuItems: [
         {
-          name: '首页',
+          name: 'Home',
+          title: '首页',
           icon: 'home',
-          path: '/',
+          exact: true,
         },
         {
-          name: '文章',
+          name: 'Blog',
+          title: '文章',
           icon: 'blog',
-          path: '/blog',
-          startsWith: true,
+          exact: false,
         },
         {
-          name: '关于我',
+          name: 'About',
+          title: '关于我',
           icon: 'about',
-          path: '/about',
+          exact: true,
         },
         {
-          name: '项目&成果',
+          name: 'Project',
+          title: '项目&成果',
           icon: 'code',
-          path: '/project',
+          exact: true,
         },
         {
-          name: '留言板',
+          name: 'Message',
+          title: '留言板',
           icon: 'chat',
-          path: '/message',
+          exact: true,
         },
       ],
     };
-  },
-  methods: {
-    isSelected(item) {
-      const link = item.path;
-      const curPathname = location.pathname.toLowerCase();
-      if (item.startsWith) {
-        return curPathname.startsWith(link);
-      }
-      return link === curPathname;
-    },
   },
 };
 </script>
@@ -72,7 +68,6 @@ export default {
 .menu-container {
   display: flex;
   flex-direction: column;
-  color: @gray;
   font-size: 16px;
   width: 100%;
 }
@@ -82,6 +77,7 @@ export default {
   display: flex;
   cursor: pointer;
   border-radius: 8px;
+  color: @gray;
 }
 
 .menu-icon {

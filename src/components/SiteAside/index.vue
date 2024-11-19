@@ -2,7 +2,7 @@
   <div class="site-aside-container">
     <div class="avatar">
       <Avatar
-        src="https://avatars.githubusercontent.com/u/150910201?v=4"
+        url="https://avatars.githubusercontent.com/u/150910201?v=4"
         :size="100"
       />
     </div>
