@@ -101,14 +101,20 @@ export default {
 
 .home-container {
   background-color: @dark;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+
+  // // 测试用
+  // width: 60%;
+  // height: 40%;
+  // margin: 100px auto;
+  // border: 2px solid #008c8c;
 }
 
 // 轮播图样式
 .home-container {
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-
   .banners {
     width: 100%;
     height: 100%;
@@ -123,8 +129,6 @@ export default {
 
 // 箭头样式
 .home-container {
-  position: relative;
-
   .icon {
     position: absolute;
     left: 50%;
@@ -172,8 +176,6 @@ export default {
 
 // 指示器样式
 .home-container {
-  position: relative;
-
   .indicator {
     position: absolute;
     top: 50%;

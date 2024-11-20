@@ -35,5 +35,9 @@ export default {
     width: 250px;
     height: 100%;
   }
+
+  .main-area {
+    height: 100%;
+  }
 }
 </style>
