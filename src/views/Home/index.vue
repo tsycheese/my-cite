@@ -7,7 +7,7 @@
       :style="{ marginTop: -index * itemHeight + 'px' }"
       @transitionend="handleTransitionEnd"
     >
-      <li v-for="(item, i) in banners" :key="item.id">
+      <li v-for="(item, i) in data" :key="item.id">
         <Banner :banner="item" />
       </li>
     </ul>
@@ -18,7 +18,7 @@
     </div>
     <div
       class="icon icon-down"
-      v-if="index < banners.length - 1"
+      v-if="index < data.length - 1"
       @click="switchBanner(index + 1)"
     >
       <Icon type="arrowDown" />
@@ -27,7 +27,7 @@
     <!-- 指示器 -->
     <ul class="indicator">
       <li
-        v-for="(item, i) in banners"
+        v-for="(item, i) in data"
         :key="item.id"
         :class="{ active: i === index }"
         @click="switchBanner(i)"
@@ -38,22 +38,22 @@
 
 <script>
 import { getBanners } from '../../api/banner';
+import FetchData from '@/mixins/fetchData';
 
 import Icon from '@/components/Icon';
 import Banner from './Banner.vue';
 
 export default {
+  mixins: [FetchData([])],
   components: {
     Banner,
     Icon,
   },
   data() {
     return {
-      banners: [],
       index: 0,
       itemHeight: 0,
       switching: false,
-      isLoading: true,
     };
   },
   methods: {
@@ -66,7 +66,7 @@ export default {
     handleWheel(e) {
       if (this.switching) return;
 
-      if (e.deltaY > 20 && this.index < this.banners.length - 1) {
+      if (e.deltaY > 20 && this.index < this.data.length - 1) {
         this.switching = true;
         this.index++;
       } else if (e.deltaY < -20 && this.index > 0) {
@@ -81,10 +81,10 @@ export default {
     handleResize() {
       this.itemHeight = this.$refs.banners.clientHeight;
     },
-  },
-  async created() {
-    this.banners = await getBanners();
-    this.isLoading = false;
+    // 提供给 FetchData 混合的方法
+    async fetchData() {
+      return await getBanners();
+    },
   },
   mounted() {
     // 获取轮播图高度
