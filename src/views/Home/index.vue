@@ -1,5 +1,5 @@
 <template>
-  <div class="home-container" @wheel="handleWheel">
+  <div v-loading="isLoading" class="home-container" @wheel="handleWheel">
     <!-- 轮播图 -->
     <ul
       class="banners"
@@ -53,6 +53,7 @@ export default {
       index: 0,
       itemHeight: 0,
       switching: false,
+      isLoading: true,
     };
   },
   methods: {
@@ -83,6 +84,7 @@ export default {
   },
   async created() {
     this.banners = await getBanners();
+    this.isLoading = false;
   },
   mounted() {
     // 获取轮播图高度
