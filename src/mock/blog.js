@@ -20,7 +20,7 @@ Mock.mock(/^\/api\/blog(\?.+)?$/, 'get', function (options) {
     code: 0,
     msg: '',
     data: {
-      total: '@integer(0, 300)',
+      total: '@integer(80, 300)',
       [`rows|${query.limit}`]: [
         {
           id: '@guid',
@@ -32,7 +32,10 @@ Mock.mock(/^\/api\/blog(\?.+)?$/, 'get', function (options) {
           },
           scanNumber: '@integer(1, 100)',
           commentNumber: '@integer(1, 100)',
-          thumb: "@image('300x250', '#50B347', '#FFF', 'Image Example')",
+          'thumb|1': [
+            "@image('300x250', '#50B347', '#FFF', 'Image Example')",
+            null,
+          ],
           createDate: +new Date() - Math.floor(Math.random() * 10000000000),
         },
       ],

@@ -71,7 +71,6 @@ export default {
       if (newPage === this.current) return;
       if (newPage < 1) newPage = 1;
       if (newPage > this.pageNumber) newPage = this.pageNumber;
-      console.log(newPage);
       this.$emit('pageChange', newPage);
     },
   },
