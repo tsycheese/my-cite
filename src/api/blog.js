@@ -20,3 +20,21 @@ export async function getBlogs(page = 1, limit = 10, categoryid = -1) {
     },
   });
 }
+
+export async function getBlog(blogId) {
+  return await request.get(`/api/blog/${blogId}`);
+}
+
+export async function postComment(commentInfo) {
+  return await request.post('/api/comment', commentInfo);
+}
+
+export async function getComments(blogId, page = 1, limit = 10) {
+  return await request.get(`/api/comment`, {
+    params: {
+      blogId,
+      page,
+      limit,
+    },
+  });
+}
