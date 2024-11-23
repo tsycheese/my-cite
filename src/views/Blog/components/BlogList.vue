@@ -1,5 +1,6 @@
 <template>
   <div class="blog-list-container" ref="container" v-loading="isLoading">
+    <!-- 博客列表 -->
     <ul class="blog-list" v-show="!isLoading">
       <li v-for="(item, i) in data.rows" :key="item.id" class="blog">
         <div class="thumb" v-if="item.thumb">
@@ -47,6 +48,7 @@
       </li>
     </ul>
 
+    <!-- 分页器 -->
     <div class="pager" v-show="!isLoading">
       <Pager
         :total="data.total"
@@ -59,6 +61,13 @@
 </template>
 
 <script>
+/*
+  博客列表页面
+    - 页面展示博客列表
+    - 用户可以通过点击博客标题，改变路由，跳转到博客详情页面
+    - 页面监听路由变化，重新请求数据
+*/
+
 import Pager from '@/components/Pager';
 
 import fetchData from '@/mixins/fetchData';

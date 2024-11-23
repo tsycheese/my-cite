@@ -6,6 +6,12 @@
 </template>
 
 <script>
+/*
+  文章分类页面
+    - 展示文章分类
+    - 点击分类，改变路由，跳转到对应分类的文章列表
+ */
+
 import fetchData from '@/mixins/fetchData';
 
 import RightList from './RightList.vue';
@@ -85,14 +91,14 @@ export default {
       }
     },
   },
-  // 种类固定，无需在路由变化时重新获取数据
-  watch: {
-    async $route() {
-      this.isLoading = true;
-      this.data = await this.fetchData();
-      this.isLoading = false;
-    },
-  },
+  // // 种类固定，无需在路由变化时重新获取数据
+  // watch: {
+  //   async $route() {
+  //     this.isLoading = true;
+  //     this.data = await this.fetchData();
+  //     this.isLoading = false;
+  //   },
+  // },
 };
 </script>
 
