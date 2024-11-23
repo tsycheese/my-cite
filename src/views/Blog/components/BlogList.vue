@@ -3,19 +3,42 @@
     <ul class="blog-list" v-show="!isLoading">
       <li v-for="(item, i) in data.rows" :key="item.id" class="blog">
         <div class="thumb" v-if="item.thumb">
-          <a href="">
+          <RouterLink
+            :to="{
+              name: 'BlogDetail',
+              params: {
+                blogId: 1,
+              },
+            }"
+          >
             <img :src="item.thumb" />
-          </a>
+          </RouterLink>
         </div>
         <div class="main">
-          <a class="title">
+          <RouterLink
+            :to="{
+              name: 'BlogDetail',
+              params: {
+                blogId: item.id,
+              },
+            }"
+            class="title"
+          >
             <h2>{{ item.title }}</h2>
-          </a>
+          </RouterLink>
           <div class="aside">
             <span>日期 : {{ formatDate(item.createDate) }}</span>
             <span>浏览量 : {{ item.scanNumber }}</span>
             <span>评论量 : {{ item.commentNumber }}</span>
-            <!-- <span>{{ item.category.name }}</span> -->
+            <RouterLink
+              :to="{
+                name: 'CategoryBlog',
+                params: {
+                  categoryId: item.category.id,
+                },
+              }"
+              >{{ item.category.name }}</RouterLink
+            >
           </div>
           <p class="desc">
             {{ item.description }}
@@ -160,6 +183,15 @@ export default {
         color: @lightWords;
         span {
           margin-right: 15px;
+        }
+
+        a {
+          color: @lightWords;
+          cursor: pointer;
+
+          &:hover {
+            color: @primary;
+          }
         }
       }
 

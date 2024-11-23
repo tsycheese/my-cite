@@ -1,7 +1,7 @@
 <template>
   <ul class="right-list-container">
     <li v-for="(item, i) in list" :key="i">
-      <p @click="handleClick(item)">
+      <p @click="handleClick(item)" :class="{ active: item.active }">
         <span class="title">{{ item.title }}</span>
         <span class="desc">{{ item.desc }}</span>
       </p>
@@ -43,6 +43,10 @@ export default {
     cursor: pointer;
     min-height: 40px;
     line-height: 40px;
+
+    &.active {
+      color: @warn;
+    }
   }
 
   .desc {

@@ -45,11 +45,13 @@ export default {
         },
         ...this.data,
       ];
+      // 将数据转换为 RightList 组件需要的格式
       return list.map((item) => {
         return {
           ...item,
           title: item.name,
           desc: item.articleCount,
+          active: item.id === this.routeInfo.categoryId,
         };
       });
     },
