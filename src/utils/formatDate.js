@@ -1,4 +1,4 @@
-export default function formatDate(timestamp) {
+export default function formatDate(timestamp, showTime = false) {
   let date = new Date(timestamp);
   let year = date.getFullYear();
   let month = date.getMonth() + 1;
@@ -13,6 +13,8 @@ export default function formatDate(timestamp) {
   minutes = minutes < 10 ? '0' + minutes : minutes;
   seconds = seconds < 10 ? '0' + seconds : seconds;
 
-  // return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  if (showTime) {
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  }
   return `${year}-${month}-${day}`;
 }

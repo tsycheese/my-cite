@@ -1,12 +1,13 @@
 <template>
   <Layout>
     <template #main>
-      <div class="blog-main-area">
+      <div class="blog-main-area" v-loading="isLoading">
         <BlogDetail :blog="data" v-if="data" />
+        <BlogComment v-if="data" />
       </div>
     </template>
     <template #right>
-      <div class="blog-right-area">
+      <div class="blog-right-area" v-loading="isLoading">
         <BlogTOC :toc="data.toc" v-if="data" />
       </div>
     </template>
@@ -19,6 +20,7 @@ import { getBlog } from '@/api/blog';
 
 import Layout from '@/components/Layout';
 import BlogDetail from './components/BlogDetail';
+import BlogComment from './components/BlogComment.vue';
 import BlogTOC from './components/BlogTOC';
 
 export default {
@@ -27,6 +29,7 @@ export default {
     Layout,
     BlogDetail,
     BlogTOC,
+    BlogComment,
   },
   methods: {
     async fetchData() {
@@ -44,10 +47,12 @@ export default {
   padding: 20px;
   overflow-y: scroll;
   scroll-behavior: smooth;
+  position: relative;
 }
 
 .blog-right-area {
   width: 300px;
   height: 100%;
+  position: relative;
 }
 </style>

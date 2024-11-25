@@ -4,7 +4,7 @@
     <aside class="aside">
       <span>日期 : {{ formatDate(+blog.createDate) }}</span>
       <span>浏览 : {{ blog.scanNumber }}</span>
-      <a href="">评论 : {{ blog.commentNumber }}</a>
+      <a href="#blog-comment-container">评论 : {{ blog.commentNumber }}</a>
       <a href="">{{ blog.category.name }}</a>
     </aside>
     <div class="markdown-body" v-html="blog.htmlContent"></div>

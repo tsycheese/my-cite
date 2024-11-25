@@ -307,9 +307,9 @@ Mock.mock(/^\/api\/comment\/?(\?.+)?$/, 'get', function (options) {
           content: '@cparagraph(1, 10)',
           createDate: Date.now(),
           'avatar|1': [
-            'https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar6.jpg',
-            'https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar4.jpg',
-            'https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar8.jpg',
+            'https://avatars.githubusercontent.com/u/150910201?v=4',
+            'https://lh3.googleusercontent.com/ogw/AF2bZyhh9cWyobOLvANS8ckh4016Q6uEIneTY9e4cpvyGPpDng=s32-c-mo',
+            'https://avatars.githubusercontent.com/u/23567154?v=4',
             'https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar2.jpg',
           ],
         },
