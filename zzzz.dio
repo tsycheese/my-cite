@@ -1,0 +1,36 @@
+<mxfile host="65bd71144e">
+    <diagram id="ucdHtJ3AiOPsBGHGZ8OL" name="第 1 页">
+        <mxGraphModel dx="1140" dy="689" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="6" value="blogInfo" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="3" target="4" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="toc" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="3" target="5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="comments" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="3" edge="1" target="9">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="510" y="3050" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3" value="Detail&lt;br&gt;获取路由信息，发送请求获取博客数据，将数据传递给子组件" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="2821" width="380" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="BlogDetail&lt;br&gt;需要 blog 信息" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="2940" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="BlogTOC&lt;br&gt;需要 blog 目录信息" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="780" y="2970" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="BlogComments&lt;br&gt;需要评论信息" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="3060" width="120" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
