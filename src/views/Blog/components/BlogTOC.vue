@@ -7,6 +7,7 @@
 
 <script>
 import RightList from './RightList';
+import { debounce } from '@/utils';
 
 export default {
   components: {
@@ -37,11 +38,52 @@ export default {
       };
       return getTOC(this.toc);
     },
+    doms() {
+      const doms = [];
+      const getDoms = (toc = []) => {
+        return toc.map((item) => {
+          const dom = document.getElementById(item.anchor);
+          if (dom) {
+            doms.push(dom);
+          }
+          item.children && getDoms(item.children);
+        });
+      };
+      getDoms(this.toc);
+      return doms;
+    },
   },
   methods: {
     handleSelect(item) {
       location.hash = `#${item.anchor}`;
+      this.activeAnchor = item.anchor;
     },
+    setSelect() {
+      this.activeAnchor = '';
+      const range = 200;
+      for (const dom of this.doms) {
+        if (!dom) {
+          return;
+        }
+        const rect = dom.getBoundingClientRect();
+        if (rect.top >= 0 && rect.top <= range) {
+          this.activeAnchor = dom.id;
+          return;
+        } else if (rect.top < 0) {
+          this.activeAnchor = dom.id;
+          continue;
+        } else if (rect.top > range) {
+          return;
+        }
+      }
+    },
+  },
+  mounted() {
+    this.setSelectDebounce = debounce(this.setSelect, 50);
+    this.$bus.$on('mainScroll', this.setSelectDebounce);
+  },
+  destroyed() {
+    this.$bus.$off('mainScroll', this.setSelectDebounce);
   },
 };
 </script>

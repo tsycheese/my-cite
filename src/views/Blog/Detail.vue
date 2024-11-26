@@ -1,7 +1,12 @@
 <template>
   <Layout>
     <template #main>
-      <div class="blog-main-area" v-loading="isLoading">
+      <div
+        ref="blogMainContainer"
+        @scroll="handleScroll"
+        class="blog-main-area"
+        v-loading="isLoading"
+      >
         <BlogDetail :blog="data" v-if="data" />
         <BlogComment v-if="data" />
       </div>
@@ -34,8 +39,18 @@ export default {
   methods: {
     async fetchData() {
       const res = await getBlog(this.$route.params.id);
+      setTimeout(() => {
+        location.hash = this.hash;
+      }, 50);
       return res;
     },
+    handleScroll() {
+      this.$bus.$emit('mainScroll', this.$refs.blogMainContainer);
+    },
+  },
+  created() {
+    this.hash = location.hash;
+    location.hash = '';
   },
 };
 </script>

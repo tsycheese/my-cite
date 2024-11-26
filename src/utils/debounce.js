@@ -1,11 +1,9 @@
-export default function (fn, delay) {
+export default function (fn, delay = 1000) {
   let timer = null;
-  return function () {
-    let context = this;
-    let args = arguments;
+  return function (...args) {
     clearTimeout(timer);
     timer = setTimeout(function () {
-      fn.apply(context, args);
+      fn(args);
     }, delay);
   };
 }
