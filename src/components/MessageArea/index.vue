@@ -10,7 +10,6 @@
     <div class="list">
       <DataList :list="list" />
     </div>
-    <div class="loading" v-loading="isListLoading"></div>
   </div>
 </template>
 
@@ -51,10 +50,5 @@ export default {
   .sub {
     margin-left: 10px;
   }
-}
-
-.loading {
-  position: relative;
-  height: 100px;
 }
 </style>
