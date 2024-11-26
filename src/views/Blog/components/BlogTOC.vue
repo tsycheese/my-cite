@@ -1,7 +1,7 @@
 <template>
   <div class="blog-toc-container">
     <h3>目录</h3>
-    <RightList :list="toc" @select="handleSelect" />
+    <RightList :list="tocWithSelect" @select="handleSelect" />
   </div>
 </template>
 
@@ -13,9 +13,29 @@ export default {
     RightList,
   },
   props: {
+    // toc[{ anchor, title, children }]
     toc: {
       type: Array,
       required: true,
+    },
+  },
+  data() {
+    return {
+      activeAnchor: 'article-md-title-1',
+    };
+  },
+  computed: {
+    tocWithSelect() {
+      const getTOC = (toc = []) => {
+        return toc.map((item) => {
+          return {
+            ...item,
+            isSelect: this.activeAnchor === item.anchor,
+            children: item.children && getTOC(item.children),
+          };
+        });
+      };
+      return getTOC(this.toc);
     },
   },
   methods: {
