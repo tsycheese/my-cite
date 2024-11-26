@@ -1,5 +1,10 @@
 <template>
-  <div class="blog-list-container" ref="container" v-loading="isLoading">
+  <div
+    class="blog-list-container"
+    ref="container"
+    v-loading="isLoading"
+    @scroll="handleScroll"
+  >
     <!-- 博客列表 -->
     <ul class="blog-list" v-show="!isLoading">
       <li v-for="(item, i) in data.rows" :key="item.id" class="blog">
@@ -123,6 +128,13 @@ export default {
         });
       }
     },
+    handleScroll() {
+      this.$bus.$emit('mainScroll', this.$refs.container);
+    },
+    handleSetMainScroll(top) {
+      console.log('setMainScroll', top);
+      this.$refs.container.scrollTop = top;
+    },
   },
   watch: {
     // 路由变化时重新获取数据
@@ -132,6 +144,13 @@ export default {
       this.data = await this.fetchData();
       this.isLoading = false;
     },
+  },
+  created() {
+    this.$bus.$on('setMainScroll', this.handleSetMainScroll);
+  },
+  beforeDestroy() {
+    this.$bus.$emit('mainScroll', null); // 通知 ToTop 组件不要再显示了
+    this.$bus.$off('setMainScroll', this.handleSetMainScroll);
   },
 };
 </script>
@@ -143,6 +162,7 @@ export default {
   height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .blog-list {

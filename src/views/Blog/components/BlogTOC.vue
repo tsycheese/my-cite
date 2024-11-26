@@ -82,7 +82,7 @@ export default {
     this.setSelectDebounce = debounce(this.setSelect, 50);
     this.$bus.$on('mainScroll', this.setSelectDebounce);
   },
-  destroyed() {
+  beforeDestroy() {
     this.$bus.$off('mainScroll', this.setSelectDebounce);
   },
 };

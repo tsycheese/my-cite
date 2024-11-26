@@ -47,10 +47,18 @@ export default {
     handleScroll() {
       this.$bus.$emit('mainScroll', this.$refs.blogMainContainer);
     },
+    handleSetMainScroll(top) {
+      this.$refs.blogMainContainer.scrollTop = top;
+    },
   },
   created() {
     this.hash = location.hash;
     location.hash = '';
+    this.$bus.$on('setMainScroll', this.handleSetMainScroll);
+  },
+  beforeDestroy() {
+    this.$bus.$emit('mainScroll', null); // 通知 ToTop 组件不要再显示了
+    this.$bus.$off('setMainScroll', this.handleSetMainScroll);
   },
 };
 </script>
