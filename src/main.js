@@ -1,7 +1,6 @@
 import './mock';
 import Vue from 'vue';
 import App from './App.vue';
-import VueRouter from 'vue-router';
 
 import '@/styles/global.less';
 import router from '@/router';
@@ -9,8 +8,6 @@ import { showMessage } from '@/utils';
 import vLoading from '@/directives/loading';
 import vLazy from '@/directives/lazy';
 import './eventBus';
-
-Vue.use(VueRouter);
 
 // 在 Vue 实例中添加全局消息弹窗方法
 Vue.prototype.$showMessage = showMessage;
