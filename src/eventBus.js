@@ -16,4 +16,7 @@ import Vue from 'vue';
  * 参数：
  * - 滚动高度
  */
-Vue.prototype.$bus = new Vue({});
+const eventBus = new Vue();
+Vue.prototype.$bus = eventBus;
+
+export default eventBus;
