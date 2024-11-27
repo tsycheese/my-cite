@@ -7,6 +7,7 @@ import '@/styles/global.less';
 import router from '@/router';
 import { showMessage } from '@/utils';
 import vLoading from '@/directives/loading';
+import vLazy from '@/directives/lazy';
 import './eventBus';
 
 Vue.use(VueRouter);
@@ -14,8 +15,9 @@ Vue.use(VueRouter);
 // 在 Vue 实例中添加全局消息弹窗方法
 Vue.prototype.$showMessage = showMessage;
 
-// 注册全局指令 v-loading
+// 注册全局指令 v-loading，v-lazy
 Vue.directive('loading', vLoading);
+Vue.directive('lazy', vLazy);
 
 new Vue({
   render: (h) => h(App),

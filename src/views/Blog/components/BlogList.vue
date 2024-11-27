@@ -12,7 +12,7 @@
               },
             }"
           >
-            <img :src="item.thumb" />
+            <img v-lazy="item.thumb" :title="item.title" />
           </RouterLink>
         </div>
         <div class="main">
