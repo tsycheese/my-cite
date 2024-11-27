@@ -1,12 +1,7 @@
 <template>
   <Layout>
     <template #main>
-      <div
-        ref="blogMainContainer"
-        @scroll="handleScroll"
-        class="blog-main-area"
-        v-loading="isLoading"
-      >
+      <div ref="blogMainContainer" class="blog-main-area" v-loading="isLoading">
         <BlogDetail :blog="data" v-if="data" />
         <BlogComment v-if="data" />
       </div>
@@ -21,6 +16,7 @@
 
 <script>
 import fetchData from '@/mixins/fetchData';
+import mainScroll from '@/mixins/mainScroll';
 import { getBlog } from '@/api/blog';
 
 import Layout from '@/components/Layout';
@@ -29,7 +25,7 @@ import BlogComment from './components/BlogComment.vue';
 import BlogTOC from './components/BlogTOC';
 
 export default {
-  mixins: [fetchData(null)],
+  mixins: [fetchData(null), mainScroll('blogMainContainer')],
   components: {
     Layout,
     BlogDetail,
@@ -44,21 +40,10 @@ export default {
       }, 50);
       return res;
     },
-    handleScroll() {
-      this.$bus.$emit('mainScroll', this.$refs.blogMainContainer);
-    },
-    handleSetMainScroll(top) {
-      this.$refs.blogMainContainer.scrollTop = top;
-    },
   },
   created() {
     this.hash = location.hash;
     location.hash = '';
-    this.$bus.$on('setMainScroll', this.handleSetMainScroll);
-  },
-  beforeDestroy() {
-    this.$bus.$emit('mainScroll', null); // 通知 ToTop 组件不要再显示了
-    this.$bus.$off('setMainScroll', this.handleSetMainScroll);
   },
 };
 </script>
