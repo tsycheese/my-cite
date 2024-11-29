@@ -1,5 +1,10 @@
 <template>
-  <img class="avatar-container" :src="url" :style="{ width: size + 'px' }" />
+  <img
+    class="avatar-container"
+    v-lazy="url"
+    :src="url"
+    :style="{ width: size + 'px', height: size + 'px' }"
+  />
 </template>
 
 <script>

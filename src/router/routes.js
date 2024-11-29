@@ -59,7 +59,7 @@ export default [
     path: '/project',
     component: Project,
     meta: {
-      title: '项目',
+      title: '项目&效果',
     },
   },
 ];
