@@ -1,5 +1,5 @@
 <template>
-  <div v-loading="isLoading" class="home-container" @wheel="handleWheel">
+  <div v-loading="loading" class="home-container" @wheel="handleWheel">
     <!-- 轮播图 -->
     <ul
       class="banners"
@@ -37,14 +37,11 @@
 </template>
 
 <script>
-import { getBanners } from '../../api/banner';
-import FetchData from '@/mixins/fetchData';
-
 import Icon from '@/components/Icon';
 import Banner from './Banner.vue';
+import { mapState } from 'vuex';
 
 export default {
-  mixins: [FetchData([])],
   components: {
     Banner,
     Icon,
@@ -55,6 +52,9 @@ export default {
       itemHeight: 0,
       switching: false,
     };
+  },
+  computed: {
+    ...mapState('banner', ['data', 'loading']),
   },
   methods: {
     // 轮播图切换
@@ -81,10 +81,9 @@ export default {
     handleResize() {
       this.itemHeight = this.$refs.banners.clientHeight;
     },
-    // 提供给 FetchData 混合的方法
-    async fetchData() {
-      return await getBanners();
-    },
+  },
+  created() {
+    this.$store.dispatch('banner/fetchBanner');
   },
   mounted() {
     // 获取轮播图高度

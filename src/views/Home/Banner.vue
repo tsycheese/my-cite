@@ -103,7 +103,7 @@ export default {
       this.mousePos.x = this.bannerSize.width / 2;
       this.mousePos.y = this.bannerSize.height / 2;
       setTimeout(() => {
-        this.$refs.img.style.transition = '';
+        this.$refs.img.style.transition = '0.05s';
       }, 300);
     },
   },
@@ -132,6 +132,7 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
+    transition: 0.05s;
   }
 
   .title,
