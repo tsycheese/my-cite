@@ -5,26 +5,26 @@
       <div class="contact-icon">
         <Icon type="github"></Icon>
       </div>
-      <div class="contact-text">梗小姐最好了</div>
+      <div class="contact-text">{{ data.githubName }}</div>
     </a>
     <!-- email -->
-    <a class="contact-item">
+    <a class="contact-item" :href="`mailto:${data.mail}`">
       <div class="contact-icon">
         <Icon type="mail"></Icon>
       </div>
-      <div class="contact-text">1787129710@qq.com</div>
+      <div class="contact-text">{{ data.mail }}</div>
     </a>
     <!-- qq -->
     <a
       class="contact-item"
-      href="tencent://message/?Menu=yes&uin=1787129710&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45"
+      :href="`tencent://message/?Menu=yes&uin=${data.qq}&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45`"
     >
       <div class="contact-icon">
         <Icon type="qq"></Icon>
       </div>
-      <div class="contact-text">1787129710</div>
+      <div class="contact-text">{{ data.qq }}</div>
       <div class="pop">
-        <img src="@/assets/qq.png" alt="QQ 联系二维码" />
+        <img :src="data.qqQrCode" alt="QQ 联系二维码" />
       </div>
     </a>
     <!-- weixin -->
@@ -32,20 +32,24 @@
       <div class="contact-icon">
         <Icon type="weixin"></Icon>
       </div>
-      <div class="contact-text">1787129710</div>
+      <div class="contact-text">{{ data.weixin }}</div>
+      <div class="pop">
+        <img :src="data.weixinQrCode" alt="微信联系二维码" />
+      </div>
     </a>
   </div>
 </template>
 
 <script>
 import Icon from '@/components/Icon';
+import { mapState } from 'vuex';
 
 export default {
   components: {
     Icon,
   },
-  data() {
-    return {};
+  computed: {
+    ...mapState('setting', ['data']),
   },
 };
 </script>

@@ -17,6 +17,8 @@ Vue.prototype.$showMessage = showMessage;
 Vue.directive('loading', vLoading);
 Vue.directive('lazy', vLazy);
 
+store.dispatch('setting/getSetting');
+
 new Vue({
   render: (h) => h(App),
   router,

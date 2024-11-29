@@ -1,18 +1,17 @@
 <template>
-  <div class="site-aside-container">
-    <div class="avatar">
-      <Avatar
-        url="https://avatars.githubusercontent.com/u/150910201?v=4"
-        :size="100"
-      />
-    </div>
-    <h1>梗小姐最好了</h1>
-    <div class="menu">
-      <Menu />
-    </div>
-    <div class="concact">
-      <Contcat />
-    </div>
+  <div class="site-aside-container" v-loading="loading">
+    <template v-if="data">
+      <div class="avatar">
+        <Avatar :url="data.avatar" :size="100" />
+      </div>
+      <h1>{{ data.siteTitle }}</h1>
+      <div class="menu">
+        <Menu />
+      </div>
+      <div class="concact">
+        <Contcat />
+      </div>
+    </template>
   </div>
 </template>
 
@@ -20,12 +19,16 @@
 import Avatar from '@/components/Avatar';
 import Contcat from './Contact';
 import Menu from './Menu';
+import { mapState } from 'vuex';
 
 export default {
   components: {
     Avatar,
     Contcat,
     Menu,
+  },
+  computed: {
+    ...mapState('setting', ['data', 'loading']),
   },
 };
 </script>
@@ -44,6 +47,7 @@ export default {
   align-items: center;
   overflow-x: hidden;
   overflow-y: auto;
+  position: relative;
 
   h1 {
     margin-top: 20px;
