@@ -22,6 +22,12 @@ export default {
       const resp = await getSetting();
       ctx.commit('setData', resp);
       ctx.commit('setLoading', false);
+      if (resp.favicon) {
+        const link = document.createElement('link');
+        link.rel = 'shortcut icon';
+        link.href = resp.favicon;
+        document.head.appendChild(link);
+      }
     },
   },
 };

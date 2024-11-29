@@ -16,6 +16,6 @@ Mock.mock('/api/setting', 'get', {
     mail: '1787129710@qq.com',
     icp: '黑ICP备17001719号',
     githubName: 'tsycheese',
-    favicon: 'http://mdrs.yuanjin.tech/Fs4CDlC6mwe_WXLMIiXcmSJLHO4f',
+    favicon: 'https://avatars.githubusercontent.com/u/150910201?v=4',
   },
 });
