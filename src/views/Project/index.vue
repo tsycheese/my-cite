@@ -1,5 +1,5 @@
 <template>
-  <div class="project-container" v-loading="loading || !data">
+  <div class="project-container" ref="container" v-loading="loading || !data">
     <div class="project-content" v-if="data">
       <div class="project-item" v-for="(item, i) in data" :key="item.id">
         <a class="img-link" href="" target="_blank">
@@ -31,8 +31,10 @@
 
 <script>
 import { mapState } from 'vuex/dist/vuex.common.js';
+import mainScroll from '@/mixins/mainScroll.js';
 
 export default {
+  mixins: [mainScroll('container')],
   computed: {
     ...mapState('project', ['data', 'loading']),
   },
@@ -49,6 +51,7 @@ export default {
   height: 100%;
   width: 100%;
   overflow-y: auto;
+  scroll-behavior: smooth;
 
   .project-content {
     max-width: 1200px;
