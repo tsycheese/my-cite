@@ -26,15 +26,20 @@
         </div>
       </div>
     </div>
+    <Empty v-if="!loading && data.length === 0" />
   </div>
 </template>
 
 <script>
+import Empty from '@/components/Empty';
 import { mapState } from 'vuex/dist/vuex.common.js';
 import mainScroll from '@/mixins/mainScroll.js';
 
 export default {
   mixins: [mainScroll('container')],
+  components: {
+    Empty,
+  },
   computed: {
     ...mapState('project', ['data', 'loading']),
   },
@@ -52,6 +57,7 @@ export default {
   width: 100%;
   overflow-y: auto;
   scroll-behavior: smooth;
+  position: relative;
 
   .project-content {
     max-width: 1200px;

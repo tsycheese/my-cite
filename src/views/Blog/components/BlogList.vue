@@ -49,7 +49,7 @@
     </ul>
 
     <!-- 分页器 -->
-    <div class="pager" v-show="!isLoading">
+    <div class="pager" v-show="!isLoading && data.rows.length !== 0">
       <Pager
         :total="data.total"
         :current="routeInfo.page"
@@ -57,6 +57,9 @@
         @pageChange="handlePageChange"
       />
     </div>
+
+    <!-- 空数据展示 -->
+    <Empty v-show="!isLoading && data.total === 0" />
   </div>
 </template>
 
@@ -69,6 +72,7 @@
 */
 
 import Pager from '@/components/Pager';
+import Empty from '@/components/Empty';
 
 import fetchData from '@/mixins/fetchData';
 import mainScroll from '../../../mixins/mainScroll';
@@ -79,6 +83,7 @@ export default {
   mixins: [fetchData([]), mainScroll('container')],
   components: {
     Pager,
+    Empty,
   },
   computed: {
     // 路由信息，用于请求数据
