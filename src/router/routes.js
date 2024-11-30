@@ -3,7 +3,7 @@ import { start, done, configure } from 'nprogress';
 
 configure({
   trickleSpeed: 20,
-  // showSpinner: false,
+  showSpinner: false,
 });
 
 function delay(duration) {
