@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --modern",
     "test:Pager": "vue serve ./src/components/Pager/test.vue",
     "test:Avatar": "vue serve ./src/components/Avatar/test.vue",
     "test:Icon": "vue serve ./src/components/Icon/test.vue",
@@ -19,7 +19,7 @@
     "test:MessageArea": "vue serve ./src/components/MessageArea/test.vue"
   },
   "dependencies": {
-    "axios": "^1.7.7",
+    "axios": "^1.7.2",
     "core-js": "^3.6.5",
     "highlight.js": "^11.10.0",
     "mockjs": "^1.1.0",
@@ -33,6 +33,7 @@
     "@vue/cli-service": "~4.5.8",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }

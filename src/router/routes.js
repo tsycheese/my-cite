@@ -1,15 +1,8 @@
-import About from '@/views/About';
-import Blog from '@/views/Blog';
-import BlogDetail from '@/views/Blog/Detail';
-import Home from '@/views/Home';
-import Message from '@/views/Message';
-import Project from '@/views/Project';
-
 export default [
   {
     name: 'Home',
     path: '/',
-    component: Home,
+    component: () => import(/* webpackChunkName: "home" */ '@/views/Home'),
     meta: {
       title: '首页',
     },
@@ -17,7 +10,7 @@ export default [
   {
     name: 'About',
     path: '/about',
-    component: About,
+    component: () => import(/* webpackChunkName: "about" */ '@/views/About'),
     meta: {
       title: '关于',
     },
@@ -25,7 +18,7 @@ export default [
   {
     name: 'Blog',
     path: '/blog',
-    component: Blog,
+    component: () => import(/* webpackChunkName: "blog" */ '@/views/Blog'),
     meta: {
       title: '博客',
     },
@@ -33,7 +26,7 @@ export default [
   {
     name: 'CategoryBlog',
     path: '/blog/cate/:categoryId',
-    component: Blog,
+    component: () => import(/* webpackChunkName: "blog" */ '@/views/Blog'),
     meta: {
       title: '博客',
     },
@@ -41,7 +34,8 @@ export default [
   {
     name: 'BlogDetail',
     path: '/blog/:blogId',
-    component: BlogDetail,
+    component: () =>
+      import(/* webpackChunkName: "blogdetail" */ '@/views/Blog/Detail'),
     meta: {
       title: '博客详情',
     },
@@ -49,7 +43,8 @@ export default [
   {
     name: 'Message',
     path: '/message',
-    component: Message,
+    component: () =>
+      import(/* webpackChunkName: "message" */ '@/views/Message'),
     meta: {
       title: '留言',
     },
@@ -57,7 +52,8 @@ export default [
   {
     name: 'Project',
     path: '/project',
-    component: Project,
+    component: () =>
+      import(/* webpackChunkName: "project" */ '@/views/Project'),
     meta: {
       title: '项目&效果',
     },
