@@ -34,7 +34,15 @@ export default {
   },
   methods: {
     async fetchData() {
-      const res = await getBlog(this.$route.params.id);
+      let res = await getBlog(this.$route.params.id);
+      // res = null;
+      if (res === null) {
+        this.$router.push({
+          path: '/404',
+        });
+        return;
+      }
+
       setTimeout(() => {
         location.hash = this.hash;
       }, 50);

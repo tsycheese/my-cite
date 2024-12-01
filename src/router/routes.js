@@ -97,4 +97,14 @@ export default [
       title: '项目&效果',
     },
   },
+  {
+    name: 'NotFound',
+    path: '*',
+    component: getPageComponent(() =>
+      import(/* webpackChunkName: "notfound" */ '@/views/NotFound')
+    ),
+    meta: {
+      title: '页面不存在',
+    },
+  },
 ];
