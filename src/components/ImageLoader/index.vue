@@ -1,8 +1,12 @@
 <template>
   <div class="image-loader">
-    <img v-if="!everythingOK" :src="placeholder" class="placeholder" />
     <img
-      :src="src"
+      v-if="!everythingOK"
+      :src="SERVER_URL + placeholder"
+      class="placeholder"
+    />
+    <img
+      :src="SERVER_URL + src"
       class="original"
       :style="{ opacity: originalOpacity, transition: duration + 'ms' }"
       @load="handleOriginalLoad"
@@ -11,7 +15,18 @@
 </template>
 
 <script>
+import { SERVER_URL } from '@/config';
+
 export default {
+  data() {
+    return {
+      SERVER_URL,
+    };
+  },
+  created() {
+    this.SERVER_URL = SERVER_URL;
+    console.log(this.SERVER_URL);
+  },
   props: {
     src: {
       type: String,

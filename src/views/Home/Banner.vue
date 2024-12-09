@@ -19,8 +19,14 @@
 
 <script>
 import ImageLoader from '@/components/ImageLoader';
+import { SERVER_URL } from '@/config';
 
 export default {
+  data() {
+    return {
+      SERVER_URL,
+    };
+  },
   components: {
     ImageLoader,
   },

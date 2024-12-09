@@ -1,4 +1,4 @@
-import './mock';
+// import './mock';
 import Vue from 'vue';
 import App from './App.vue';
 
@@ -9,6 +9,7 @@ import { showMessage } from '@/utils';
 import vLoading from '@/directives/loading';
 import vLazy from '@/directives/lazy';
 import './eventBus';
+import './config.js';
 
 // 在 Vue 实例中添加全局消息弹窗方法
 Vue.prototype.$showMessage = showMessage;

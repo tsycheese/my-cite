@@ -24,7 +24,7 @@
       </div>
       <div class="contact-text">{{ data.qq }}</div>
       <div class="pop">
-        <img :src="data.qqQrCode" alt="QQ 联系二维码" />
+        <img :src="SERVER_URL + data.qqQrCode" alt="QQ 联系二维码" />
       </div>
     </a>
     <!-- weixin -->
@@ -34,19 +34,25 @@
       </div>
       <div class="contact-text">{{ data.weixin }}</div>
       <div class="pop">
-        <img :src="data.weixinQrCode" alt="微信联系二维码" />
+        <img :src="SERVER_URL + data.weixinQrCode" alt="微信联系二维码" />
       </div>
     </a>
   </div>
 </template>
 
 <script>
+import { SERVER_URL } from '@/config';
 import Icon from '@/components/Icon';
 import { mapState } from 'vuex';
 
 export default {
   components: {
     Icon,
+  },
+  data() {
+    return {
+      SERVER_URL,
+    };
   },
   computed: {
     ...mapState('setting', ['data']),

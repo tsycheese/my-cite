@@ -3,7 +3,11 @@
     <div class="project-content" v-if="data">
       <div class="project-item" v-for="(item, i) in data" :key="item.id">
         <a class="img-link" href="" target="_blank">
-          <img :src="item.thumb" v-lazy="item.thumb" alt="" />
+          <img
+            :src="SERVER_URL + item.thumb"
+            v-lazy="SERVER_URL + item.thumb"
+            alt=""
+          />
         </a>
         <div class="main">
           <a
@@ -34,11 +38,17 @@
 import Empty from '@/components/Empty';
 import { mapState } from 'vuex/dist/vuex.common.js';
 import mainScroll from '@/mixins/mainScroll.js';
+import { SERVER_URL } from '@/config';
 
 export default {
   mixins: [mainScroll('container')],
   components: {
     Empty,
+  },
+  data() {
+    return {
+      SERVER_URL,
+    };
   },
   computed: {
     ...mapState('project', ['data', 'loading']),

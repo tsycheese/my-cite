@@ -1,14 +1,24 @@
 <template>
   <img
     class="avatar-container"
-    v-lazy="url"
-    :src="url"
+    v-lazy="SERVER_URL + url"
+    :src="SERVER_URL + url"
     :style="{ width: size + 'px', height: size + 'px' }"
   />
 </template>
 
 <script>
+import { SERVER_URL } from '@/config';
+
 export default {
+  data() {
+    return {
+      SERVER_URL,
+    };
+  },
+  created() {
+    console.log(this.SERVER_URL);
+  },
   props: {
     url: {
       type: String, // 类型

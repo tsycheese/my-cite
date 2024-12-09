@@ -12,7 +12,10 @@
               },
             }"
           >
-            <img v-lazy="item.thumb" :title="item.title" />
+            <img
+              v-lazy="SERVER_URL + item.thumb"
+              :title="SERVER_URL + item.title"
+            />
           </RouterLink>
         </div>
         <div class="main">
@@ -35,10 +38,10 @@
               :to="{
                 name: 'CategoryBlog',
                 params: {
-                  categoryId: item.category.id,
+                  categoryId: item.category ? item.category.id : -1,
                 },
               }"
-              >{{ item.category.name }}</RouterLink
+              >{{ item.category ? item.category.name : '未分类' }}</RouterLink
             >
           </div>
           <p class="desc">
@@ -71,6 +74,8 @@
     - 页面监听路由变化，重新请求数据
 */
 
+import { SERVER_URL } from '@/config';
+
 import Pager from '@/components/Pager';
 import Empty from '@/components/Empty';
 
@@ -84,6 +89,11 @@ export default {
   components: {
     Pager,
     Empty,
+  },
+  data() {
+    return {
+      SERVER_URL,
+    };
   },
   computed: {
     // 路由信息，用于请求数据

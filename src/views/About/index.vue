@@ -1,38 +1,18 @@
 <template>
-  <div class="about-container" v-loading="loading || !srcLoaded">
+  <div class="about-container">
     <iframe
-      :src="data"
-      class="about-content"
+      src="//player.bilibili.com/player.html?isOutside=true&aid=80433022&bvid=BV1GJ411x7h7&cid=137649199&p=1"
       scrolling="no"
       border="0"
       frameborder="no"
       framespacing="0"
-      @load="hanleLoad"
+      allowfullscreen="true"
     ></iframe>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
-
-export default {
-  data() {
-    return {
-      srcLoaded: false,
-    };
-  },
-  methods: {
-    hanleLoad() {
-      this.srcLoaded = true;
-    },
-  },
-  computed: {
-    ...mapState('about', ['data', 'loading']),
-  },
-  created() {
-    this.$store.dispatch('about/fetchAbout');
-  },
-};
+export default {};
 </script>
 
 <style lang="less" scoped>
@@ -42,7 +22,7 @@ export default {
   overflow: hidden;
   position: relative;
 
-  .about-content {
+  iframe {
     height: 100%;
     width: 100%;
   }
