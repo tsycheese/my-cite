@@ -2,7 +2,11 @@
   <div class="project-container" ref="container" v-loading="loading || !data">
     <div class="project-content" v-if="data">
       <div class="project-item" v-for="(item, i) in data" :key="item.id">
-        <a class="img-link" href="" target="_blank">
+        <a
+          class="img-link"
+          :href="item.url ? item.url : `javascript:alert('没有捏')`"
+          target="_blank"
+        >
           <img
             :src="SERVER_URL + item.thumb"
             v-lazy="SERVER_URL + item.thumb"
@@ -78,7 +82,7 @@ export default {
       min-height: 150px;
       padding: 10px 20px;
       display: flex;
-      margin-top: 30px;
+      margin: 30px 0;
       transition: 0.2s;
       border-radius: 12px;
 

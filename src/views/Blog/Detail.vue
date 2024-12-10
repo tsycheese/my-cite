@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     async fetchData() {
-      let res = await getBlog(this.$route.params.id);
+      let res = await getBlog(this.$route.params.blogId);
       // res = null;
       if (res === null) {
         this.$router.push({

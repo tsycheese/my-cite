@@ -37,12 +37,16 @@ export default {
   },
   methods: {
     async fetchData() {
-      return await getComments(this.$route.params.id, this.page, this.limit);
+      return await getComments(
+        this.$route.params.blogId,
+        this.page,
+        this.limit
+      );
     },
     async handleSubmit(formData, callback) {
       const resp = await postComment({
         ...formData,
-        blogId: this.$route.params.id,
+        blogId: this.$route.params.blogId,
       });
       this.data.rows.unshift(resp);
       this.data.total++;

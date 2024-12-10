@@ -8,7 +8,7 @@
             :to="{
               name: 'BlogDetail',
               params: {
-                blogId: 1,
+                blogId: item.id,
               },
             }"
           >
@@ -164,7 +164,8 @@ export default {
 
 .blog-list {
   .blog {
-    margin: 10px 0;
+    max-width: 1000px;
+    margin: 10px auto;
     padding: 10px;
     display: flex;
     position: relative;
