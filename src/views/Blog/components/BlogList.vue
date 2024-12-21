@@ -98,7 +98,7 @@ export default {
   computed: {
     // 路由信息，用于请求数据
     routeInfo() {
-      const categoryId = +this.$route.params.categoryId;
+      const categoryId = this.$route.params.categoryId;
       const page = +this.$route.query.page;
       const limit = +this.$route.query.limit;
       return {

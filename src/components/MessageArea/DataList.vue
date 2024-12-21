@@ -1,6 +1,6 @@
 <template>
   <ul class="data-list-container">
-    <li v-for="item in list" :key="item.id">
+    <li v-for="(item, index) in list" :key="index">
       <Avatar :url="item.avatar" :size="40"></Avatar>
       <div class="main">
         <div class="header">

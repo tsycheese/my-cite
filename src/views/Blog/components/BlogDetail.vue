@@ -9,10 +9,10 @@
         :to="{
           name: 'CategoryBlog',
           params: {
-            categoryId: blog.category.id,
+            categoryId: blog.category?.id,
           },
         }"
-        >{{ blog.category.name }}</RouterLink
+        >{{ blog.category ? blog.category.name : '未分类' }}</RouterLink
       >
     </aside>
     <div class="markdown-body" v-html="blog.htmlContent"></div>

@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     routeInfo() {
-      const categoryId = +this.$route.params.categoryId;
+      const categoryId = this.$route.params.categoryId;
       const page = +this.$route.query.page;
       const limit = +this.$route.query.limit;
       return {
